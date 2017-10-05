@@ -1,0 +1,24 @@
+{
+  "name": "selectr-th",
+  "version": "1.0.0",
+  "description": "typeahead select",
+  "main": "index.vue",
+  "scripts": {
+    "test": "echo 'Test'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Onefivefournine/selectr-th.git"
+  },
+  "keywords": [
+    "Vue",
+    "select",
+    "typeahead"
+  ],
+  "author": "onefivefournine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Onefivefournine/selectr-th/issues"
+  },
+  "homepage": "https://github.com/Onefivefournine/selectr-th#readme"
+}
