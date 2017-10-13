@@ -209,7 +209,7 @@ export default Vue.extend( {
   },
   updated() {
     if ( this.preOptions && !this.query.length ) {
-      this.options = this.useAsOptions ? this.preOptions[ this.useAsOptions ] : this.preOptions;
+      this.options = ( this.useAsOptions && this.preOptions[ this.useAsOptions ] ) ? this.preOptions[ this.useAsOptions ] : this.preOptions;
     }
   },
   watch: {
@@ -233,7 +233,10 @@ export default Vue.extend( {
     open() {
       this.searching = true;
       let self = this;
-      setTimeout( () => self.$refs.selectr_input.focus(), 0 );
+      setTimeout( () => {
+        self.$refs.selectr_input.focus()
+        self.$refs.selectr_input.setSelectionRange( 0, this.query.length )
+      }, 0 );
       if ( this.query.length ) this.useAction()
     },
     close( ev ) {
@@ -253,7 +256,7 @@ export default Vue.extend( {
     execAction() {
       return this.action( this.query )
         .then( ( res ) => {
-          this.options = this.useAsOptions ? res[ this.useAsOptions ] : res;
+          this.options = ( this.useAsOptions && res[ this.useAsOptions ] ) ? res[ this.useAsOptions ] : res;
           if ( this.query.length && !this.options.length ) {
             this.typeAheadPointer = -1;
             this.options = [ {
